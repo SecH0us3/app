@@ -296,6 +296,8 @@ const data = {
                     description: `
                     <p>
                     Просто приложите пруфы сюда <a href="https://passkeys.directory/">https://passkeys.directory/</a>
+                    <p>
+                    И хорошие менеджеры паролей уведомят хороших пользователей об этом
                     `
                 },
             ]
