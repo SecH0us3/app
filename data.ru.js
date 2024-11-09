@@ -6,34 +6,11 @@ const data = {
             minScore: 5,
             questions: [
                 {
-                    id: 10001,
-                    question: "Вы понимаете разницу между идентификацией, аутентификацией и авторизацией", 
-                    score: 1,
-                    description: `
-                    <b>Идентификация:</b> Это процесс установления личности пользователя или системы<br>
-                    Идентификация отвечает на вопрос: <b>"Кто ты?"</b><br>
-                    На этом этапе пользователь предоставляет некие данные, которые позволяют системе определить, кто он такой<br>
-                    Примеры идентификации:
-                    <ul>
-                    <li>Ввод логина (имени пользователя)</li>
-                    <li>Предоставление идентификатора пользователя (номера карты или штрихкода)</li>
-                    </ul>
-                    <b>Аутентификация:</b> После идентификации следует аутентификация — процесс подтверждения того, что пользователь действительно является тем, за кого себя выдает<br>
-                    Аутентификация отвечает на вопрос: <b>"Докажи, что ты — это ты"</b><br>
-                    Примеры аутентификации:
-                    <ul>
-                    <li>Ввод пароля</li>
-                    <li>Использование биометрических данных (отпечаток пальца, распознавание лица)</li>
-                    <li>Использование одноразового кода (OTP) для подтверждения входа</li>
-                    </ul>
-                    <b>Авторизация:</b> Авторизация происходит после успешной аутентификации и определяет уровень доступа пользователя к ресурсам<br>
-                    Авторизация отвечает на вопрос: "Что тебе разрешено делать?"<br>
-                    Примеры авторизации:
-                    <ul>
-                    <li>Доступ к определенным файлам или папкам на сервере</li>
-                    <li>Разрешение на выполнение определенных действий, например, редактирование данных или установка программного обеспечения</li>
-                    </ul>`
-                 },
+                    "id": 10001,
+                    "question": "You understand the difference between identification, authentication, and authorization",
+                    "score": 1,
+                    "description": "<b>Identification:</b> This is the process of establishing the identity of a user or system.<br>Identification answers the question: <b>\"Who are you?\"</b><br>At this stage, the user provides data that allows the system to determine who they are.<br>Examples of identification:<ul><li>Entering a username</li><li>Providing a user identifier (card number or barcode)</li></ul><b>Authentication:</b> Following identification, authentication is the process of confirming that the user is indeed who they claim to be.<br>Authentication answers the question: <b>\"Prove that you are who you say you are\"</b><br>Examples of authentication:<ul><li>Entering a password</li><li>Using biometric data (fingerprint, facial recognition)</li><li>Using a one-time code (OTP) to confirm access</li></ul><b>Authorization:</b> Authorization occurs after successful authentication and determines the user’s access level to resources.<br>Authorization answers the question: \"What are you allowed to do?\"<br>Examples of authorization:<ul><li>Access to specific files or folders on a server</li><li>Permission to perform certain actions, such as editing data or installing software</li></ul>"
+                },
                  {
                     id:10002,
                     question: "Метод идентификации отделён от метода аутентификации",
