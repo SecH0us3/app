@@ -6,10 +6,14 @@
     <title>Самооценка безопасности приложений (OWASP ASVS)</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <script>
+        const userLang = navigator.language || navigator.userLanguage;
+        const script = document.createElement('script');
+        script.src = userLang.startsWith('ru') ? 'data.ru.js' : 'data.en.js';
+        document.head.appendChild(script);
+    </script>
 </head>
 <body>
-    <script src="data.ru.js"></script>
-
     <header class="header fixed-top py-2">
         <div class="container">
             <h1 class="h5 mb-0">Самооценка безопасности приложений</h1>
