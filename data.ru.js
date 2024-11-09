@@ -11,59 +11,31 @@ const data = {
                     "score": 1,
                     "description": "<b>Identification:</b> This is the process of establishing the identity of a user or system.<br>Identification answers the question: <b>\"Who are you?\"</b><br>At this stage, the user provides data that allows the system to determine who they are.<br>Examples of identification:<ul><li>Entering a username</li><li>Providing a user identifier (card number or barcode)</li></ul><b>Authentication:</b> Following identification, authentication is the process of confirming that the user is indeed who they claim to be.<br>Authentication answers the question: <b>\"Prove that you are who you say you are\"</b><br>Examples of authentication:<ul><li>Entering a password</li><li>Using biometric data (fingerprint, facial recognition)</li><li>Using a one-time code (OTP) to confirm access</li></ul><b>Authorization:</b> Authorization occurs after successful authentication and determines the user’s access level to resources.<br>Authorization answers the question: \"What are you allowed to do?\"<br>Examples of authorization:<ul><li>Access to specific files or folders on a server</li><li>Permission to perform certain actions, such as editing data or installing software</li></ul>"
                 },
-                 {
-                    id:10002,
-                    question: "Метод идентификации отделён от метода аутентификации",
-                    score: 1,
-                    description: `
-                    <p>
-                    Метод идентификации должен принимать только идентификатор пользователя и в ответ отдавать временный токен, с которым клиент уже будет проходить аутентификацию
-                    <p>
-                    Такой подход позволяет защитить вас от огромного числа утилит, которые умеют перебирать одновременно логин и пароль по словарю
-                    <p>
-                    Также токен можно ограничивать не только по времени, но и по количеству попыток использования, после чего необходимо повторить ввод идентификатора повторно
-                    `
+                {
+                    "id": 10002,
+                    "question": "The identification method is separate from the authentication method",
+                    "score": 1,
+                    "description": "<p>The identification method should accept only the user identifier and return a temporary token, which the client will then use for authentication.</p><p>This approach protects against a large number of utilities capable of simultaneously brute-forcing login and password using dictionaries.</p><p>The token can also be limited not only by time but by the number of usage attempts, after which re-entering the identifier is required.</p>"
                 },
                 {
-                    id: 10003, 
-                    question: "Методы идентификации и аутентификации защищены неназойливым тестом CAPTCHA", 
-                    score: 1,
-                    description: `
-                    <p>
-                    Подойдёт любая простая реализация, без светофоров, например <a href="https://www.google.com/recaptcha/about/">Google reCAPTCHA</a>, где пользователь даже не замечает, что в браузере решается тест
-                    <p>
-                    Это спасёт от самых простых переборщиков`
+                    "id": 10003,
+                    "question": "Identification and authentication methods are protected by an unobtrusive CAPTCHA test",
+                    "score": 1,
+                    "description": "<p>Any simple implementation is suitable, without traffic lights, such as <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>, where the user doesn’t even notice that a test is being solved in the browser.</p><p>This will protect against the simplest brute-force attempts.</p>"
                 },
                 {
-                    id: 10004, 
-                    question: "Большое количество неверных попыток аутентификации пользователя не должно блокировать пользователя", 
-                    score: 1,
-                    description: `
-                    <p>
-                    Злоумышленники могут использовать функционал блокировки пользователей для нанесения вреда вашему бренду, это могут быть нечестные конкуренты, вымогатели или просто зловреды
-                    <p>
-                    Что делать: лучше заниматься блокировкой IP после ненормального числа попыток, это позволит простым пользователям продожить работать`
-                },
+                    "id": 10004,
+                    "question": "A large number of incorrect user authentication attempts should not block the user",
+                    "score": 1,
+                    "description": "<p>Malicious actors may use user-blocking functionality to harm your brand, which could be done by dishonest competitors, extortionists, or simply malicious users.</p><p>Solution: it’s better to block the IP address after an abnormal number of attempts, allowing regular users to continue working.</p>"
+                }
+                ,
                 {
-                    id: 10006,
-                    question: "Для аутентификации используется passkey",
-                    score: 5,
-                    description:`
-                        <p><strong>Passkey</strong> — это новый метод аутентификации, который заменяет пароли на более безопасный и удобный способ входа в учетные записи и приложения. В основе passkey лежит технология, использующая асимметричную криптографию.</p>
-
-                        <p>При использовании passkey на устройстве создается пара ключей — <strong>приватный</strong> и <strong>публичный</strong>. Приватный ключ остается на устройстве пользователя и никогда не передается, а публичный ключ отправляется на сервер. Когда пользователь пытается войти в систему, сервер отправляет запрос, который подписывается приватным ключом на устройстве. Подпись проверяется сервером с использованием публичного ключа, и если она верна, пользователь аутентифицируется.</p>
-
-                        <h5>Преимущества passkey:</h5>
-                        <ul>
-                            <li><strong>Безопасность</strong>: Приватный ключ никогда не покидает устройство, что исключает возможность его кражи через сетевые атаки.</li>
-                            <li><strong>Удобство</strong>: Нет необходимости запоминать пароли или вводить их вручную.</li>
-                            <li><strong>Устойчивость к фишингу</strong>: Злоумышленники не могут получить доступ к приватному ключу даже при обмане пользователя, также passkey включает проверку на адрес сайта (домен), где его можно использовать. Эта проверка является ключевым элементом безопасности passkey и предотвращает фишинг-атаки</li>
-                        </ul>
-
-                        <p>Passkey может использоваться с биометрией (отпечатки пальцев, распознавание лица) или PIN-кодами, что делает его простой в использовании и безопасной альтернативой традиционным паролям.</p>
-
-                    `
-                }                
+                    "id": 10006,
+                    "question": "Passkey is used for authentication",
+                    "score": 5,
+                    "description": "<p><strong>Passkey</strong> is a new authentication method that replaces passwords with a more secure and convenient way to access accounts and applications. Passkey is based on technology that uses asymmetric cryptography.</p><p>When using passkey, a key pair — <strong>private</strong> and <strong>public</strong> — is created on the device. The private key remains on the user's device and is never transmitted, while the public key is sent to the server. When the user attempts to log in, the server sends a request that is signed by the private key on the device. The server verifies the signature using the public key, and if it is correct, the user is authenticated.</p><h5>Benefits of passkey:</h5><ul><li><strong>Security</strong>: The private key never leaves the device, eliminating the risk of theft through network attacks.</li><li><strong>Convenience</strong>: No need to remember or manually enter passwords.</li><li><strong>Resistance to phishing</strong>: Attackers cannot access the private key even if they trick the user; additionally, passkey includes a check for the site address (domain) where it can be used. This verification is a key security element of passkey and prevents phishing attacks.</li></ul><p>Passkey can be used with biometrics (fingerprints, facial recognition) or PIN codes, making it a simple and secure alternative to traditional passwords.</p>"
+                }                               
             ]
         },
 
