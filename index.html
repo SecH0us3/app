@@ -9,14 +9,20 @@
     <link href="style.css" rel="stylesheet">
     <script>
         var app = {};
-        const userLang = navigator.language || navigator.userLanguage;
-        console.log(userLang);
-        const script = document.createElement('script');
-        script.src = userLang.startsWith('ru') ? 'data.ru.js' : 'data.en.js';
-        script.onload = function() {
-            app.run();
-        };
-        document.head.appendChild(script);
+        const savedLang = localStorage.getItem('selectedLang');
+        const userLang = savedLang || navigator.language || navigator.userLanguage;
+        console.log('Active language:', userLang);
+        
+        function loadLanguageScript(lang) {
+            const script = document.createElement('script');
+            script.src = lang.startsWith('ru') ? 'data.ru.js' : 'data.en.js';
+            script.onload = function() {
+                app.run();
+            };
+            document.head.appendChild(script);
+        }
+
+        loadLanguageScript(userLang);
     </script>
 </head>
 <body>
@@ -28,7 +34,13 @@
         </div>
     </header>
 
-    <button id="themeToggle" class="btn btn-sm btn-outline-primary">🌓</button>
+    <div class="theme-lang-controls">
+        <button id="themeToggle" class="btn btn-sm btn-outline-primary">🌓</button>
+        <select id="langSelect" class="btn btn-sm btn-outline-primary ms-2">
+            <option value="ru">RU</option>
+            <option value="en">EN</option>
+        </select>
+    </div>
 
     <main class="container mt-5 pt-5">
         <div id="categories"></div>
@@ -130,8 +142,6 @@
             localStorage.setItem('securityAssessmentAnswers', JSON.stringify(getAnswers()));
         }
 
-
-
         function getAnswers() {
             const answers = {};
             app.data.categories.forEach(category => {
@@ -185,6 +195,20 @@
             }
         });
 
+        function setInitialLanguage() {
+            const savedLang = localStorage.getItem('selectedLang');
+            if (savedLang) {
+                document.getElementById('langSelect').value = savedLang;
+            }
+        }
+
+        function handleLanguageChange(event) {
+            const selectedLang = event.target.value;
+            localStorage.setItem('selectedLang', selectedLang);
+            // Reload the page to apply the new language
+            window.location.reload();
+        }
+
         app.run = () => {
             app.data = window.getData();
 
@@ -192,7 +216,9 @@
             document.getElementById('categories').addEventListener('click', toggleCategory);
             document.getElementById('categories').addEventListener('change', updateScore);
             document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            document.getElementById('langSelect').addEventListener('change', handleLanguageChange);
             setInitialTheme();
+            setInitialLanguage();
             restoreAnswers();
         };
     </script>

@@ -101,3 +101,16 @@ body.dark-theme {
     background-color: #444;
     color: #f8f9fa;
 }
+.theme-lang-controls {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1030;
+    width: 100px;
+}
+
+.theme-lang-controls select{
+    position: fixed;
+    top:10px;
+    height: 31px;
+}
