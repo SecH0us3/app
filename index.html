@@ -10,6 +10,7 @@
     <script>
         var app = {};
         const userLang = navigator.language || navigator.userLanguage;
+        console.log(userLang);
         const script = document.createElement('script');
         script.src = userLang.startsWith('ru') ? 'data.ru.js' : 'data.en.js';
         script.onload = function() {
@@ -44,9 +45,8 @@
     <script>
         function renderCategories() {
             const categoriesContainer = document.getElementById('categories');
-            const data = window.getData();
 
-            data.categories.forEach(category => {
+            app.data.categories.forEach(category => {
                 const categoryElement = document.createElement('div');
                 categoryElement.className = 'card mb-3';
                 categoryElement.innerHTML = `
@@ -78,7 +78,7 @@
         }
 
         function showInfoPanel(questionId) {
-            const question = data.categories.flatMap(c => c.questions).find(q => q.id === questionId);
+            const question = app.data.categories.flatMap(c => c.questions).find(q => q.id === questionId);
             if (question) {
                 document.getElementById('infoPanelTitle').textContent = question.question;
                 document.getElementById('infoPanelContent').innerHTML = question.description;
@@ -101,7 +101,7 @@
 
         function updateScore() {
             let yesCount = 0, noCount = 0, naCount = 0, totalScore = 0;
-            data.categories.forEach(category => {
+            app.data.categories.forEach(category => {
                 let categoryYesCount = 0;
                 let categoryTotalScore =0;
                 category.questions.forEach(question => {
@@ -134,7 +134,7 @@
 
         function getAnswers() {
             const answers = {};
-            data.categories.forEach(category => {
+            app.data.categories.forEach(category => {
                 category.questions.forEach(question => {
                     const radios = document.getElementsByName(`question-${question.id}`);
                     for (const radio of radios) {
@@ -186,6 +186,8 @@
         });
 
         app.run = () => {
+            app.data = window.getData();
+
             renderCategories();
             document.getElementById('categories').addEventListener('click', toggleCategory);
             document.getElementById('categories').addEventListener('change', updateScore);
