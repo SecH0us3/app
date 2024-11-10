@@ -8,13 +8,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <script>
+        var app = {};
         const userLang = navigator.language || navigator.userLanguage;
         const script = document.createElement('script');
         script.src = userLang.startsWith('ru') ? 'data.ru.js' : 'data.en.js';
+        script.onload = function() {
+            app.run();
+        };
         document.head.appendChild(script);
     </script>
 </head>
 <body>
+
     <header class="header fixed-top py-2">
         <div class="container">
             <h1 class="h5 mb-0">Самооценка безопасности приложений</h1>
@@ -39,6 +44,8 @@
     <script>
         function renderCategories() {
             const categoriesContainer = document.getElementById('categories');
+            const data = window.getData();
+
             data.categories.forEach(category => {
                 const categoryElement = document.createElement('div');
                 categoryElement.className = 'card mb-3';
@@ -178,14 +185,14 @@
             }
         });
 
-        document.addEventListener('DOMContentLoaded', () => {
+        app.run = () => {
             renderCategories();
             document.getElementById('categories').addEventListener('click', toggleCategory);
             document.getElementById('categories').addEventListener('change', updateScore);
             document.getElementById('themeToggle').addEventListener('click', toggleTheme);
             setInitialTheme();
             restoreAnswers();
-        });
+        };
     </script>
 </body>
 </html>

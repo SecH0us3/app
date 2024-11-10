@@ -1,4 +1,5 @@
-const data = {
+function getData () {
+    return {
     categories: [
         {
             id: 1,
@@ -406,3 +407,4 @@ const data = {
  * 2fa by mobile push = show the number and action details / location
  * закрыть Tor
  */
+};

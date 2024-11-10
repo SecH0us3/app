@@ -1,4 +1,5 @@
-const data = {
+function getData () {
+    return {
     categories: [
         {
             id: 1,
@@ -335,3 +336,4 @@ const data = {
         }
     ]
 };
+}
